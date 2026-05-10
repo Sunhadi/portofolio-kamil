@@ -7,16 +7,16 @@ interface IExperience {
 }
 export const experience = [
   {
-    title: 'SMK Tkm Teknik Tamansiswa Purworejo',
-    company: 'Teknik Mekanik Industri',
+    title: 'Teknik Mekanik Industri',
+    company: 'SMK TKM TEKNIK TAMANSISWA PURWOREJO',
     type: 'Education',
     description:
       'Mekanik Industri adalah profesional yang merancang, memasang, memelihara, dan memperbaiki mesin dan peralatan industri. Mereka memastikan mesin beroperasi dengan efisien dan aman melalui instalasi, perawatan rutin, perbaikan, dan peningkatan performa.',
     date: '2018 - 2021',
   },
   {
-    title: 'Universitas Muhammadiyah Purworejo',
-    company: 'Teknologi Informasi',
+    title: 'TEKNOLOGI INFORMASI',
+    company: 'Universitas Muhammadiyah Purworejo',
     type: 'Education',
     description:
       'Teknologi Informasi adalah jurusan yang mempelajari pengelolaan dan penerapan teknologi komputer untuk berbagai aplikasi, termasuk pengembangan perangkat lunak, jaringan, keamanan informasi, dan analisis data.',
@@ -29,5 +29,21 @@ export const experience = [
     description:
       'Seorang profesional yang mengembangkan dan merancang situs web serta aplikasi mobile untuk klien secara independen. Mereka menangani semua aspek pengembangan, dari perancangan antarmuka pengguna hingga implementasi fitur dan pemeliharaan.',
     date: '2024 - Sekarang',
+  },
+  {
+    title: 'KPPS 4 + Sirekap di TPS 01 Desa Somongari',
+    company: 'KPU Kabupaten Purworejo',
+    type: 'Volunteer',
+    description:
+      'Bertugas sebagai KPPS 4 dan Sirekap di TPS 01 Desa Somongari selama pemilihan.',
+    date: '2024',
+  },
+  {
+    title: 'Staf Sekretariat Desa Somongari',
+    company: 'KPU Kabupaten Purworejo',
+    type: 'Volunteer',
+    description:
+      'Bertugas sebagai staf Sekretariat Desa Somongari divisi Teknik Penyelengaraan pemilu dan hukum serta hubungan masyarakat dan hukum',
+    date: '2024 - 2025',
   },
 ]
