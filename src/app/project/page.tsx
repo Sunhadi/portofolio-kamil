@@ -2,23 +2,70 @@
 
 import ProjectCard from '@/components/common/ProjectCard'
 import TextSection from '@/components/common/TextSection'
-
 import { useState } from 'react'
-import useSWR from 'swr'
-import { fetcher } from '@/utils/service/Fetcher'
 import { IProject } from '@/utils/interface/Project'
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 import { GithubStats } from '@/components/common/GithubStats'
+
+// 1. Data manual yang sudah disesuaikan dengan interface IProject
+const PROJECT_DATA: IProject[] = [
+  {
+    title: "Tetenger",
+    image: "/img-project/tetenger.png",
+    deskripsi: "tetenger",
+    type: "web",
+    repo: "#",
+    demo: "#" // Opsional
+  },
+  {
+    title: "Rianty Batik",
+    image: "/img-project/batik.png",
+    deskripsi: "Rianty Batik Merupakan Web Penjualan Batik Khas Yogyakarta.",
+    type: "Web",
+    repo: "#",
+  },
+  {
+    title: "Ibadah MU",
+    image: "/img-project/ibadahmu.png",
+    deskripsi: "IbadahMu Merupakan Web Untuk Sholat, Doa doa dll",
+    type: "web",
+    repo: "#",
+  },
+  {
+    title: "Web Desa Somongari",
+    image: "/img-project/somongari.png",
+    deskripsi: "Web Profil Desa Somongari",
+    type: "web",
+    repo: "#"
+  },
+  {
+    title: "Els Computer",
+    image: "img-project/els.png",
+    deskripsi: "Els Computer Merupakan Web Penjualan Komputer",
+    type: "web",
+    repo: "#"
+  },
+  {
+    title: "Nonton Film App",
+    image: "img-project/Aplikasi Nonton Film.png",
+    deskripsi: "Aplikasi Nonton Film Merupakan Aplikasi Untuk Menonton Film",
+    type: "mobile",
+    repo: "#"
+  }
+]
 
 export default function Project() {
   const [filter, setFilter] = useState('all')
 
-  const { data, isLoading, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL as string}/project`,
-    fetcher,
-    { revalidateOnFocus: false, revalidateOnReconnect: false },
-  )
+  // 2. Logika filter data manual
+  const filteredData = PROJECT_DATA.filter((item) => {
+    if (filter === 'all') return true
+    if (filter === 'mobile') {
+      return ['android', 'ios', 'flutter', 'mobile'].includes(item.type)
+    }
+    if (filter === 'web') return item.type === 'web'
+    if (filter === 'api') return item.type === 'api'
+    return item.type === filter
+  }).reverse() // Membalik urutan agar project terbaru (bawah di array) muncul di atas
 
   return (
     <div className="">
@@ -27,115 +74,58 @@ export default function Project() {
         <div className="my-10 hidden justify-center md:flex">
           <GithubStats />
         </div>
+        
+        {/* Bagian Tab Filter */}
         <div className="my-4 flex justify-center gap-4 font-semibold text-[#616D8A] dark:text-white sm:gap-6 md:gap-8 lg:gap-4">
-          <button
-            className={`group relative flex cursor-pointer flex-col items-start justify-center`}
+          
+          {/* Button All */}
+          <button 
+            className="group relative flex cursor-pointer flex-col items-start justify-center" 
             onClick={() => setFilter('all')}
           >
-            <span
-              className={`absolute bottom-0 h-1 ${
-                filter == 'all' ? 'w-full' : 'w-0'
-              } rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full`}
-            ></span>
-            <p>
-              All{' '}
-              {!isLoading &&
-                !error &&
-                filter == 'all' &&
-                `(${!isLoading && data?.data.length})`}
-            </p>
+            <span className={`absolute bottom-0 h-1 ${filter === 'all' ? 'w-full' : 'w-0'} rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full`}></span>
+            <p>All ({PROJECT_DATA.length})</p>
           </button>
-          <button
-            className={`group relative flex cursor-pointer flex-col items-start justify-center`}
+
+          {/* Button Web */}
+          <button 
+            className="group relative flex cursor-pointer flex-col items-start justify-center" 
             onClick={() => setFilter('web')}
           >
-            <span
-              className={`absolute bottom-0 h-1 ${
-                filter == 'web' ? 'w-full' : 'w-0'
-              } rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full`}
-            ></span>
-            <p>
-              Web{' '}
-              {!isLoading &&
-                !error &&
-                filter == 'web' &&
-                `(${
-                  data.data.filter((item: IProject) => item.type === 'web')
-                    .length
-                })`}
-            </p>
+            <span className={`absolute bottom-0 h-1 ${filter === 'web' ? 'w-full' : 'w-0'} rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full`}></span>
+            <p>Web ({PROJECT_DATA.filter(i => i.type === 'web').length})</p>
           </button>
-          <button
-            className={`group relative flex cursor-pointer flex-col items-start justify-center`}
+
+          {/* Button Mobile */}
+          <button 
+            className="group relative flex cursor-pointer flex-col items-start justify-center" 
             onClick={() => setFilter('mobile')}
           >
-            <span
-              className={`absolute bottom-0 h-1 ${
-                filter == 'mobile' ? 'w-full' : 'w-0'
-              } rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full`}
-            ></span>
-            <p>
-              Mobile{' '}
-              {filter == 'mobile' &&
-                `(${
-                  data.data.filter((item: IProject) =>
-                    ['android', 'ios', 'flutter', 'mobile'].includes(item.type),
-                  ).length
-                })`}
-            </p>
+            <span className={`absolute bottom-0 h-1 ${filter === 'mobile' ? 'w-full' : 'w-0'} rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full`}></span>
+            <p>Mobile ({PROJECT_DATA.filter(i => ['android', 'ios', 'flutter', 'mobile'].includes(i.type)).length})</p>
           </button>
-          <button
-            className={`group relative flex cursor-pointer flex-col items-start justify-center`}
+
+          {/* Button API */}
+          <button 
+            className="group relative flex cursor-pointer flex-col items-start justify-center" 
             onClick={() => setFilter('api')}
           >
-            <span
-              className={`absolute bottom-0 h-1 ${
-                filter == 'api' ? 'w-full' : 'w-0'
-              } rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full`}
-            ></span>
-            <p>
-              Api{' '}
-              {!isLoading &&
-                !error &&
-                filter == 'api' &&
-                `(${
-                  data.data.filter((item: IProject) => item.type === 'api')
-                    .length
-                })`}
-            </p>
+            <span className={`absolute bottom-0 h-1 ${filter === 'api' ? 'w-full' : 'w-0'} rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full`}></span>
+            <p>Api ({PROJECT_DATA.filter(i => i.type === 'api').length})</p>
           </button>
+          
         </div>
       </div>
+
+      {/* Bagian List Card */}
       <div className="mb-2 mt-6 flex w-full flex-wrap justify-center gap-4 sm:mb-4 md:mb-5 lg:mb-6 lg:gap-6">
-        {!isLoading &&
-          !error &&
-          data.data
-            .slice(0)
-            .reverse()
-            .filter((item: IProject) => {
-              if (filter === 'all') return true
-              if (filter === 'mobile')
-                return ['android', 'ios', 'flutter', 'mobile'].includes(
-                  item.type,
-                )
-              if (filter === 'web') return item.type === 'web'
-              if (filter === 'api') return item.type === 'api'
-              return item.type === filter
-            })
-            .map((item: IProject, index: Number) => (
-              <ProjectCard {...item} key={index} />
-            ))}
-        {isLoading && (
-          <div className="flex w-3/4 flex-row items-center justify-center">
-            <Skeleton
-              height={160}
-              width={320}
-              count={12}
-              containerClassName="flex gap-2 flex-row items-center justify-center w-full flex-wrap"
-            />
-          </div>
+        {filteredData.length > 0 ? (
+          filteredData.map((item, index) => (
+            <ProjectCard {...item} key={index} />
+          ))
+        ) : (
+          <p className="text-center">No projects found.</p>
         )}
-        {error && <p className="text-center">Error ...</p>}
       </div>
     </div>
   )

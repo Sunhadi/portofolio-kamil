@@ -1,12 +1,10 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Navbar from '@/components/Navbar'
-import { Settings } from '@/components/common/Settings'
 import Providers from '@/provider/Providers'
 
 export const metadata: Metadata = {
   title: 'Kamil | Portfolio',
-  description: 'Kamil | Portfolio',
+  description: 'Ahmad Sunhadi Kamil | Portfolio',
 }
 
 export default function RootLayout({
@@ -18,9 +16,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="overflow-x-hidden">
         <Providers>
-          <Navbar />
-          <main className="mb-10 p-5 md:p-8">{children}</main>
-          <Settings />
+          {/* Next.js secara otomatis memasukkan Template di sini */}
+          <main className="relative mb-10 p-5 md:p-8">
+            {children}
+          </main>
         </Providers>
       </body>
     </html>
