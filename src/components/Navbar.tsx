@@ -40,7 +40,6 @@ export default function Navbar() {
       window.scrollY >= 100 ? setNavBg(true) : setNavBg(false)
     }
 
-    // Mengunci scroll body saat menu mobile terbuka agar lebih user-friendly
     if (isActive) {
       document.body.style.overflow = 'hidden'
     } else {
@@ -58,7 +57,7 @@ export default function Navbar() {
         navBg && 'md:justify-center md:py-2',
       )}
     >
-      {/* Desktop Menu (TETAP SAMA) */}
+      {/* Desktop Menu */}
       <ul
         className={twMerge(
           'hidden gap-6 text-lg md:flex',
@@ -71,7 +70,7 @@ export default function Navbar() {
         ))}
       </ul>
       
-      {/* Next Page Floating Button (TETAP SAMA) */}
+      {/* Next Page Floating Button */}
       {navBg && mounted && (
         <div
           onClick={() => {
@@ -103,9 +102,7 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* --- MOBILE SECTION (DIPERBARUI) --- */}
-      
-      {/* Mobile Menu Button - Animasi rotasi pada icon */}
+      {/* MOBILE SECTION */}
       <div className="flex md:hidden">
         <button
           onClick={() => setIsActive(!isActive)}
@@ -119,7 +116,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay - Transisi Slide & Blur */}
       <div
         className={twMerge(
           'fixed inset-0 h-screen w-full bg-white/80 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] md:hidden',
@@ -136,7 +132,7 @@ export default function Navbar() {
                   "transform transition-all duration-500",
                   isActive ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                 )}
-                style={{ transitionDelay: `${index * 75}ms` }} // Efek muncul berurutan
+                style={{ transitionDelay: `${index * 75}ms` }}
                 onClick={() => setIsActive(false)}
               >
                 <a 
@@ -149,7 +145,6 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Social Links dengan animasi delay paling akhir */}
           <div 
             className={twMerge(
               "mt-12 flex gap-6 transition-all duration-700 delay-[400ms]",
@@ -157,7 +152,8 @@ export default function Navbar() {
             )}
           >
             {logoLinks.slice(0, 5).map((link, index) => {
-              const Icon = link.icon
+              // PERBAIKAN: Definisikan tipe Icon sebagai ElementType untuk TypeScript
+              const Icon: React.ElementType = link.icon
               return (
                 <a 
                   key={index} 
