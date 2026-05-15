@@ -40,6 +40,7 @@ export default function Navbar() {
       window.scrollY >= 100 ? setNavBg(true) : setNavBg(false)
     }
 
+    // Lock scroll saat menu mobile aktif
     if (isActive) {
       document.body.style.overflow = 'hidden'
     } else {
@@ -57,7 +58,7 @@ export default function Navbar() {
         navBg && 'md:justify-center md:py-2',
       )}
     >
-      {/* Desktop Menu */}
+      {/* --- DESKTOP MENU --- */}
       <ul
         className={twMerge(
           'hidden gap-6 text-lg md:flex',
@@ -70,14 +71,12 @@ export default function Navbar() {
         ))}
       </ul>
       
-      {/* Next Page Floating Button */}
+      {/* --- FLOATING BUTTON (DESKTOP) --- */}
       {navBg && mounted && (
         <div
           onClick={() => {
             const targetRoute = navigationRoutes[pathName]
-            if (targetRoute) {
-              animatePageOut(targetRoute, router)
-            }
+            if (targetRoute) animatePageOut(targetRoute, router)
           }}
           className="fixed top-0 my-4 hidden h-16 w-16 -rotate-120 cursor-pointer rounded-full border-4 border-black-primary bg-yellow-primary duration-150 hover:-rotate-90 md:right-16 md:block"
         >
@@ -102,7 +101,9 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* MOBILE SECTION */}
+      {/* --- MOBILE SECTION --- */}
+      
+      {/* Hamburger Button */}
       <div className="flex md:hidden">
         <button
           onClick={() => setIsActive(!isActive)}
@@ -116,15 +117,17 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Fullscreen Overlay */}
       <div
         className={twMerge(
-          'fixed inset-0 h-screen w-full bg-white/80 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] md:hidden',
+          'fixed inset-0 h-screen w-full bg-white/90 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] md:hidden',
           isActive ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0',
           'z-[55]' 
         )}
       >
         <div className="flex h-full flex-col items-center justify-center px-6">
-          <ul className="flex w-full flex-col gap-4">
+          {/* Nav Links Mobile */}
+          <ul className="flex w-full max-w-[300px] flex-col gap-4">
             {navLinks.map((link, index) => (
               <li
                 key={index}
@@ -137,7 +140,7 @@ export default function Navbar() {
               >
                 <a 
                   href={link.href}
-                  className="block rounded-2xl border-2 border-black-primary bg-gray-50 p-5 text-center text-xl font-bold text-[#616D8A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none transition-all"
+                  className="block rounded-2xl border-2 border-black-primary bg-gray-50 p-4 text-center text-xl font-bold text-[#616D8A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none transition-all"
                 >
                   {link.name}
                 </a>
@@ -145,14 +148,15 @@ export default function Navbar() {
             ))}
           </ul>
 
+          {/* Social Links Mobile - Perbaikan agar tidak tembus layar */}
           <div 
             className={twMerge(
-              "mt-12 flex gap-6 transition-all duration-700 delay-[400ms]",
+              "mt-12 flex flex-wrap justify-center gap-4 transition-all duration-700 delay-[400ms] px-4 w-full",
               isActive ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             )}
           >
             {logoLinks.slice(0, 5).map((link, index) => {
-              // PERBAIKAN: Definisikan tipe Icon sebagai ElementType untuk TypeScript
+              // Fix TypeScript: Definisikan Icon sebagai ElementType
               const Icon: React.ElementType = link.icon
               return (
                 <a 
@@ -160,9 +164,9 @@ export default function Navbar() {
                   href={link.href} 
                   target="_blank" 
                   rel="noreferrer"
-                  className="rounded-full border-2 border-black-primary bg-white p-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-none transition-all"
+                  className="rounded-full border-2 border-black-primary bg-white p-2.5 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:translate-y-0.5 active:shadow-none transition-all flex items-center justify-center"
                 >
-                  <Icon className="text-2xl text-black-primary" />
+                  <Icon className="text-xl text-black-primary" />
                 </a>
               )
             })}
