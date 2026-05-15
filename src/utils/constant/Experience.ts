@@ -33,7 +33,7 @@ export const experience = [
   {
     title: 'KPPS 4 + Sirekap di TPS 01 Desa Somongari',
     company: 'KPU Kabupaten Purworejo',
-    type: 'Volunteer',
+    type: 'Work',
     description:
       'Bertugas sebagai KPPS 4 dan Sirekap di TPS 01 Desa Somongari selama pemilihan.',
     date: '2024',
@@ -41,7 +41,7 @@ export const experience = [
   {
     title: 'Staf Sekretariat Desa Somongari',
     company: 'KPU Kabupaten Purworejo',
-    type: 'Volunteer',
+    type: 'Work',
     description:
       'Bertugas sebagai staf Sekretariat Desa Somongari divisi Teknik Penyelengaraan pemilu dan hukum serta hubungan masyarakat dan hukum',
     date: '2024 - 2025',
