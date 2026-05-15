@@ -5,13 +5,13 @@ import TextSection from '@/components/common/TextSection'
 import { useState } from 'react'
 import { GithubStats } from '@/components/common/GithubStats'
 
+// Data Project Ahmad Sunhadi Kamil
 const PROJECT_DATA = [
   {
     title: "Tetenger",
     image: "/img-project/tetenger.png",
     description: "Solusi lengkap olah dokumen: Gabung, Pisah, dan Tanda Tangan PDF dalam satu pintu.",
     type: "web",
-    repo: "#",
     tech: ["Typescript", "React", "Tailwind"]
   },
   {
@@ -43,8 +43,8 @@ const PROJECT_DATA = [
     image: "img-project/els.png",
     description: "E-commerce penjualan perangkat komputer.",
     type: "web",
-    repo: "#",
-    tech: ["Typescript", "React", "Tailwind, API"]
+    repo: "https://github.com/Sunhadi/els-semarang.git",
+    tech: ["PHP", "Laravel", "JavaScript", "MySQL"]
   },
   {
     title: "Nonton Film App",
@@ -60,7 +60,7 @@ const PROJECT_DATA = [
     description: "Web penjualan perangkat komputer.",
     type: "web",
     repo: "#",
-    tech: ["Typescript", "React", "Tailwind, API"]
+    tech: ["Laravel", "Alpine.js", "Tailwind"]
   },
 ]
 
@@ -70,41 +70,44 @@ export default function Project() {
   const filteredData = PROJECT_DATA.filter((item) => {
     if (filter === 'all') return true
     if (filter === 'mobile') {
-      return ['android', 'ios', 'flutter', 'mobile'].includes(item.type)
+      return ['android', 'ios', 'flutter', 'mobile'].includes(item.type.toLowerCase())
     }
-    return item.type === filter
+    return item.type.toLowerCase() === filter.toLowerCase()
   }).reverse()
 
   return (
-    <div className="container mx-auto px-4 py-10">
+    <div className="container mx-auto px-4 py-6 md:py-10">
       <TextSection icon="⚒️" text="Project" />
       
-      <div className="my-10 hidden justify-center md:flex">
-        <GithubStats />
+      {/* Container Github Stats: Tampil di mobile dengan efek scaling */}
+      <div className="my-6 md:my-10 flex justify-center w-full overflow-hidden">
+        <div className="scale-[0.75] sm:scale-90 md:scale-100 origin-center">
+          <GithubStats />
+        </div>
       </div>
       
-      {/* Tab Filter */}
-      <div className="my-8 flex justify-center gap-4 font-semibold text-[#616D8A] dark:text-white sm:gap-6 md:gap-8 lg:gap-4">
+      {/* Tab Filter: Responsif untuk layar HP (text kecil di mobile, normal di desktop) */}
+      <div className="my-6 md:my-8 flex justify-center gap-3 sm:gap-6 md:gap-8 lg:gap-10 font-semibold text-[#616D8A] dark:text-white">
         {['all', 'web', 'mobile', 'api'].map((cat) => (
           <button 
             key={cat}
-            className="group relative flex cursor-pointer flex-col items-start justify-center uppercase" 
+            className="group relative flex cursor-pointer flex-col items-center justify-center uppercase text-[11px] sm:text-xs md:text-base tracking-widest" 
             onClick={() => setFilter(cat)}
           >
-            <span className={`absolute bottom-0 h-1 ${filter === cat ? 'w-full' : 'w-0'} rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full`}></span>
-            <p>{cat} ({cat === 'all' ? PROJECT_DATA.length : PROJECT_DATA.filter(i => i.type === cat || (cat === 'mobile' && ['flutter', 'mobile'].includes(i.type))).length})</p>
+            <span className={`absolute bottom-[-4px] h-1 ${filter === cat ? 'w-full' : 'w-0'} rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full`}></span>
+            <p>{cat} ({cat === 'all' ? PROJECT_DATA.length : PROJECT_DATA.filter(i => i.type.toLowerCase() === cat || (cat === 'mobile' && i.type.toLowerCase() === 'flutter')).length})</p>
           </button>
         ))}
       </div>
 
-      {/* Grid List */}
-      <div className="mb-2 mt-6 flex w-full flex-wrap justify-center gap-6">
+      {/* Grid List: Jarak antar card disesuaikan untuk mobile */}
+      <div className="mb-10 mt-6 flex w-full flex-wrap justify-center gap-4 sm:gap-6 md:gap-10">
         {filteredData.length > 0 ? (
           filteredData.map((item, index) => (
             <ProjectCard {...item} key={index} />
           ))
         ) : (
-          <p className="text-center text-gray-500">No projects found.</p>
+          <p className="text-center text-gray-500 py-20 italic">No projects found.</p>
         )}
       </div>
     </div>

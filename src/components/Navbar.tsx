@@ -11,8 +11,6 @@ import { Tooltip } from '@material-tailwind/react'
 import { usePathname, useRouter } from 'next/navigation'
 import { animatePageOut } from '@/utils/animation/animatePage'
 
-type Routes = '/about' | '/project' | '/sertifikat' | '/resume'
-
 export default function Navbar() {
   const [isActive, setIsActive] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -26,7 +24,6 @@ export default function Navbar() {
     { name: '😎 About', href: '/about' },
     { name: '⚒️ Project', href: '/project' },
     { name: '📜 Sertifikat', href: '/sertifikat' },
-    /*{ name: '📑 Resume', href: '/resume' },*/
     { name: '📲 Contact', href: '/contact' },
   ]
 
@@ -35,7 +32,6 @@ export default function Navbar() {
     '/about': '/project',
     '/project': '/sertifikat',
     '/sertifikat': '/resume',
-    /*'/resume': '/contact',*/
   }
 
   useEffect(() => {
@@ -44,19 +40,25 @@ export default function Navbar() {
       window.scrollY >= 100 ? setNavBg(true) : setNavBg(false)
     }
 
+    // Mengunci scroll body saat menu mobile terbuka agar lebih user-friendly
+    if (isActive) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
     window.addEventListener('scroll', changeNavBg)
     return () => window.removeEventListener('scroll', changeNavBg)
-  }, [])
+  }, [isActive])
 
   return (
     <nav
       className={twMerge(
-        // PERBAIKAN: z-index dinaikkan ke z-50
         `sticky top-0 z-50 flex items-center justify-end bg-transparent px-5 py-3 text-[#616D8A] duration-200 dark:text-white md:px-10 md:py-5`,
         navBg && 'md:justify-center md:py-2',
       )}
     >
-      {/* Desktop Menu */}
+      {/* Desktop Menu (TETAP SAMA) */}
       <ul
         className={twMerge(
           'hidden gap-6 text-lg md:flex',
@@ -69,7 +71,7 @@ export default function Navbar() {
         ))}
       </ul>
       
-      {/* Next Page Floating Button */}
+      {/* Next Page Floating Button (TETAP SAMA) */}
       {navBg && mounted && (
         <div
           onClick={() => {
@@ -80,15 +82,9 @@ export default function Navbar() {
           }}
           className="fixed top-0 my-4 hidden h-16 w-16 -rotate-120 cursor-pointer rounded-full border-4 border-black-primary bg-yellow-primary duration-150 hover:-rotate-90 md:right-16 md:block"
         >
-          <Tooltip
-            content="Next Page"
-            animate={{
-              mount: { scale: 1, y: 0 },
-              unmount: { scale: 0, y: -25 },
-            }}
-          >
+          <Tooltip content="Next Page">
             <svg xmlns="http://www.w3.org/2000/svg" className="p-2" viewBox="0 0 24 24">
-               <g fill="none" stroke="black" strokeLinecap="round" strokeWidth={2}>
+              <g fill="none" stroke="black" strokeLinecap="round" strokeWidth={2}>
                 <path strokeDasharray="2 4" strokeDashoffset={6} d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21">
                   <animate attributeName="stroke-dashoffset" dur="0.6s" repeatCount="indefinite" values="6;0" />
                 </path>
@@ -107,54 +103,75 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Mobile Menu Button */}
+      {/* --- MOBILE SECTION (DIPERBARUI) --- */}
+      
+      {/* Mobile Menu Button - Animasi rotasi pada icon */}
       <div className="flex md:hidden">
         <button
           onClick={() => setIsActive(!isActive)}
-          className="relative z-[60] rounded-full border-2 bg-gray-100 p-1"
+          className="relative z-[60] flex h-12 w-12 items-center justify-center rounded-full border-2 border-black-primary bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform active:scale-90"
         >
-          <IconContext.Provider value={{ className: 'text-4xl text-black-primary p-2' }}>
-            {isActive ? <RiCloseFill /> : <RxHamburgerMenu />}
-          </IconContext.Provider>
+          <div className={twMerge("transition-all duration-300", isActive ? "rotate-180" : "rotate-0")}>
+            <IconContext.Provider value={{ className: 'text-2xl text-black-primary' }}>
+              {isActive ? <RiCloseFill /> : <RxHamburgerMenu />}
+            </IconContext.Provider>
+          </div>
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Transisi Slide & Blur */}
       <div
         className={twMerge(
-          'fixed top-0 flex h-screen w-full justify-center overflow-x-hidden bg-white/90 backdrop-blur-sm transition-all duration-300 ease-in-out md:hidden',
-          isActive ? 'right-0' : '-right-full',
-          'z-[55]' // Di bawah tombol close tapi di atas konten main
+          'fixed inset-0 h-screen w-full bg-white/80 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] md:hidden',
+          isActive ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0',
+          'z-[55]' 
         )}
       >
-        <ul className="mt-24 flex h-fit w-[90%] flex-col items-center gap-8 rounded-xl bg-gray-100 px-3 py-10 text-lg font-light shadow-xl">
-          {navLinks.map((link, index) => (
-            <li
-              key={index}
-              className="group relative w-fit cursor-pointer font-semibold text-[#616D8A]"
-              onClick={() => setIsActive(false)}
-            >
-              <span className="absolute bottom-0 h-1 w-0 rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full"></span>
-              <a href={link.href}>{link.name}</a>
-            </li>
-          ))}
-          <div className="mt-4 border-t pt-6 w-full flex justify-center">
-            <ul className="flex gap-6">
-              {logoLinks.slice(0, 5).map((link, index) => {
-                const Icon = link.icon
-                return (
-                  <li key={index}>
-                    <a href={link.href} target="_blank" rel="noreferrer">
-                      <IconContext.Provider value={{ className: 'text-3xl text-black-primary' }}>
-                        <Icon />
-                      </IconContext.Provider>
-                    </a>
-                  </li>
-                )
-              })}
-            </ul>
+        <div className="flex h-full flex-col items-center justify-center px-6">
+          <ul className="flex w-full flex-col gap-4">
+            {navLinks.map((link, index) => (
+              <li
+                key={index}
+                className={twMerge(
+                  "transform transition-all duration-500",
+                  isActive ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                )}
+                style={{ transitionDelay: `${index * 75}ms` }} // Efek muncul berurutan
+                onClick={() => setIsActive(false)}
+              >
+                <a 
+                  href={link.href}
+                  className="block rounded-2xl border-2 border-black-primary bg-gray-50 p-5 text-center text-xl font-bold text-[#616D8A] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:translate-y-1 active:shadow-none transition-all"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Social Links dengan animasi delay paling akhir */}
+          <div 
+            className={twMerge(
+              "mt-12 flex gap-6 transition-all duration-700 delay-[400ms]",
+              isActive ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            )}
+          >
+            {logoLinks.slice(0, 5).map((link, index) => {
+              const Icon = link.icon
+              return (
+                <a 
+                  key={index} 
+                  href={link.href} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  className="rounded-full border-2 border-black-primary bg-white p-3 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] active:shadow-none transition-all"
+                >
+                  <Icon className="text-2xl text-black-primary" />
+                </a>
+              )
+            })}
           </div>
-        </ul>
+        </div>
       </div>
     </nav>
   )
