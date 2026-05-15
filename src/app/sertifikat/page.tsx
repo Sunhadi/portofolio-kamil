@@ -1,10 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import CertificateCard from '@/components/common/CertificateCard'
 import TextSection from '@/components/common/TextSection'
 import { ICertificate } from '@/utils/interface/Certificate'
 
-// Data manual sertifikat kamu
 const CERTIFICATE_DATA: ICertificate[] = [
   {
     title: "Fullstack Web Developer",
@@ -65,25 +65,43 @@ const CERTIFICATE_DATA: ICertificate[] = [
 ]
 
 export default function CertificatePage() {
+  const [filter, setFilter] = useState('all')
+
+  const filteredData = CERTIFICATE_DATA.filter((item) => {
+    if (filter === 'all') return true
+    return item.type === filter
+  }).reverse()
+
   return (
     <div className="container mx-auto px-4 py-10">
-      {/* Header Section */}
       <TextSection icon="📜" text="Certifications" />
       
       <p className="mt-2 mb-10 text-center mx-auto max-w-2xl text-[#616D8A] dark:text-gray-400">
-        Daftar sertifikasi kompetensi, kursus online, dan penghargaan yang telah saya raih untuk menunjang karir profesional.
+        Daftar sertifikasi kompetensi dan kursus online yang telah saya raih untuk menunjang karir profesional.
       </p>
 
-      {/* Grid Layout untuk Sertifikat */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {CERTIFICATE_DATA.length > 0 ? (
-          CERTIFICATE_DATA.map((cert, index) => (
+      {/* Filter Tabs - Identik dengan gaya Project */}
+      <div className="my-10 flex justify-center gap-4 font-semibold text-[#616D8A] dark:text-white sm:gap-6 md:gap-8 lg:gap-4">
+        {['all', 'course', 'competence'].map((t) => (
+          <button 
+            key={t}
+            className="group relative flex cursor-pointer flex-col items-start justify-center uppercase" 
+            onClick={() => setFilter(t)}
+          >
+            <span className={`absolute bottom-0 h-1 ${filter === t ? 'w-full' : 'w-0'} rounded-md bg-orange-primary transition-all duration-300 ease-in-out group-hover:w-full`}></span>
+            <p>{t} ({t === 'all' ? CERTIFICATE_DATA.length : CERTIFICATE_DATA.filter(i => i.type === t).length})</p>
+          </button>
+        ))}
+      </div>
+
+      {/* Grid Layout - Menggunakan Flexbox agar card h-64 w-64 tetap presisi di tengah */}
+      <div className="flex w-full flex-wrap justify-center gap-6">
+        {filteredData.length > 0 ? (
+          filteredData.map((cert, index) => (
             <CertificateCard key={index} {...cert} />
           ))
         ) : (
-          <p className="text-center col-span-full text-gray-500">
-            Belum ada sertifikat yang ditambahkan.
-          </p>
+          <p className="text-center text-gray-500">Belum ada sertifikat dalam kategori ini.</p>
         )}
       </div>
     </div>

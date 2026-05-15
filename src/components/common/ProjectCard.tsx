@@ -11,6 +11,7 @@ export default function ProjectCard({
   repo,
   demo,
   type,
+  tech, // Menambahkan props tech stack
 }: any) {
   return (
     <motion.div
@@ -21,14 +22,11 @@ export default function ProjectCard({
       className="dark:border-dark-secondary group relative h-64 w-64 cursor-pointer overflow-hidden rounded-[3px] border-2 border-black-primary object-cover shadow-button-card"
     >
       <Image
-        // PERBAIKAN: Gunakan variabel 'image' secara langsung 
-        // agar bisa membaca path dari folder public
         src={image} 
         width={1000}
         height={1000}
         className="h-full w-full object-cover"
         alt={title || "project image"}
-        // Tambahkan unoptimized jika Anda tidak ingin mendaftarkan domain di next.config.js
         unoptimized 
       />
       
@@ -57,15 +55,25 @@ export default function ProjectCard({
       </div>
 
       {/* Bagian deskripsi (Hover) */}
-      <div className="dark:bg-dark-secondary absolute bottom-0 h-10 w-full border-t-2 border-black-primary bg-yellow-primary p-2 transition-all duration-300 group-hover:h-[60%] lg:group-hover:h-2/4">
-        <div className="h-20">
+      <div className="dark:bg-dark-secondary absolute bottom-0 h-10 w-full border-t-2 border-black-primary bg-yellow-primary p-2 transition-all duration-300 group-hover:h-[70%]">
+        <div className="h-full flex flex-col">
           <h1 className="line-clamp-1 font-bold text-black-primary group-hover:line-clamp-2">
             {title}{' '}
-            <span className="ml-1 rounded-lg bg-black px-2 py-0.5 text-[10px] text-white">
+            <span className="ml-1 rounded-lg bg-black px-2 py-0.5 text-[10px] text-white uppercase">
               {type}
             </span>
           </h1>
-          <p className="hidden mt-1 text-[10px] leading-tight font-normal text-black-primary group-hover:block">
+
+          {/* Menampilkan Bahasa Pemrograman / Tech Stack */}
+          <div className="mt-1 hidden group-hover:flex flex-wrap gap-1">
+            {tech?.map((item: string, idx: number) => (
+              <span key={idx} className="bg-orange-primary border border-black-primary text-[8px] font-bold px-1 rounded text-black">
+                {item}
+              </span>
+            ))}
+          </div>
+
+          <p className="hidden mt-2 text-[10px] leading-tight font-normal text-black-primary group-hover:block line-clamp-3">
             {description}
           </p>
         </div>
