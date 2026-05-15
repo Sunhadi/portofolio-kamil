@@ -26,7 +26,7 @@ export default function Navbar() {
     { name: '😎 About', href: '/about' },
     { name: '⚒️ Project', href: '/project' },
     { name: '📜 Sertifikat', href: '/sertifikat' },
-    { name: '📑 Resume', href: '/resume' },
+    /*{ name: '📑 Resume', href: '/resume' },*/
     { name: '📲 Contact', href: '/contact' },
   ]
 
@@ -35,7 +35,7 @@ export default function Navbar() {
     '/about': '/project',
     '/project': '/sertifikat',
     '/sertifikat': '/resume',
-    '/resume': '/contact',
+    /*'/resume': '/contact',*/
   }
 
   useEffect(() => {

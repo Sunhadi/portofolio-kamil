@@ -50,7 +50,14 @@ const PROJECT_DATA: IProject[] = [
     deskripsi: "Aplikasi Nonton Film Merupakan Aplikasi Untuk Menonton Film",
     type: "mobile",
     repo: "#"
-  }
+  },
+  {
+    title: "Web Harisma Computer",
+    image: "img-project/baru.png",
+    deskripsi: "Web Harisma Computer Merupakan Web Penjualan Komputer",
+    type: "web",
+    repo: "#"
+  },
 ]
 
 export default function Project() {

@@ -36,7 +36,7 @@ export default function Footer() {
         </div>
         <hr className="my-6 border-gray-600 sm:mx-auto lg:my-8" />
         <span className="block text-sm text-primary-text sm:text-center">
-          © {new Date().getFullYear()} . By Ahmadsunhadikamil 🚀.
+          © {new Date().getFullYear()} . By Ahmadsunhadikamil.
         </span>
       </div>
     </footer>
