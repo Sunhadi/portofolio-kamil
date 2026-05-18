@@ -10,29 +10,22 @@ const CERTIFICATE_DATA: ICertificate[] = [
     title: "Fullstack Web Developer",
     company: "Digital Talent Scholarship - Kominfo",
     image: "/sertifikat/komdigi.png",
-    href: "https://dicoding.com/certificates/...",
+    href: "#",
     type: "course"
   },
   {
     title: "Software Engineering intern",
     company: "HackerRank",
     image: "/sertifikat/software.png",
-    href: "https://www.hackerrank.com/certificates/ff4ad25a3ab2",
+    href: "https://www.hackerrank.com/certificates/iframe/ff4ad25a3ab2",
     type: "competence"
   },
   {
     title: "Frontend Developer (React)",
     company: "HackerRank",
     image: "/sertifikat/react.png",
-    href: "https://www.hackerrank.com/certificates/dc11096f0263",
+    href: "https://www.hackerrank.com/certificates/iframe/dc11096f0263",
     type: "competence"
-  },
-  {
-    title: "Belajar Dasar AI",
-    company: "Dicoding",
-    image: "/sertifikat/aidasar.png",
-    href: "#",
-    type: "course"
   },
   {
     title: "Google Analytics Individual Qualification",
@@ -42,24 +35,31 @@ const CERTIFICATE_DATA: ICertificate[] = [
     type: "competence"
   },
   {
-    title: "Pentingnya Menjaga Keamanan Digital",
-    company: "Digital Talent Scholarship - Kominfo",
-    image: "/sertifikat/duniamaya.png",
-    href: "#",
-    type: "course"
-  },
-  {
-    title: "Dasar-Dasar Implementasi Kecerdasan Artifisial",
-    company: "Digital Talent Scholarship - Kominfo",
-    image: "/sertifikat/implementasiai.png",
-    href: "#",
-    type: "course"
-  },
-  {
     title: "Rest API (intermediate)",
     company: "HackerRank",
     image: "/sertifikat/restapi.png",
-    href: "#",
+    href: "https://www.hackerrank.com/certificates/iframe/1a8b894f670a",
+    type: "competence"
+  },
+  {
+    title: "Spec-Driven Development dengan Kiro",
+    company: "Dicoding",
+    image: "/sertifikat/kiro.png",
+    href: "https://www.dicoding.com/certificates/L4PQ9W4QQPO1",
+    type: "course"
+  },
+  {
+    title: "Dasar Cloud dan Gen AI AWS",
+    company: "Dicoding",
+    image: "/sertifikat/aws-dasar.png",
+    href: "https://www.dicoding.com/certificates/JMZVOLG1NXN9",
+    type: "course"
+  },
+  {
+    title: "SQL (Advenced)",
+    company: "HackerRank",
+    image: "/sertifikat/sql.png",
+    href: "https://www.hackerrank.com/certificates/iframe/7c253c6d9491",
     type: "competence"
   }
 ]

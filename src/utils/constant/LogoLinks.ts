@@ -6,6 +6,7 @@ import {
   Mail,
   Telegram,
   Twitter,
+  HackerRank,
 } from '@/components/common/Icons'
 
 export const logoLinks = [
@@ -45,5 +46,10 @@ export const logoLinks = [
     name: 'Telegram',
     href: 'https://telegram.org/dl',
     icon: Telegram,
+  },
+  {
+    name: 'HackerRank',
+    href: 'https://www.hackerrank.com/profile/ahmadsunhadikam1',
+    icon: HackerRank,
   },
 ]

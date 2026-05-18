@@ -26,9 +26,13 @@ export default function About() {
   return (
     <section className="text-black-primary">
       <TextSection icon="😎" text="Tentang Saya" />
-      <div className="mx-auto mb-12 mt-8 flex flex-col items-center justify-center md:gap-10 lg:flex-row">
-        <div className="relative aspect-auto h-60 w-60 items-baseline justify-center rounded-3xl border-4 border-black-primary bg-yellow-primary object-cover shadow-image-card shadow-black-primary md:h-96 md:w-1/2 xl:w-96">
-          <div className="absolute right-0 flex h-12 w-16 translate-x-8 translate-y-6 items-center justify-center rounded-t-xl rounded-br-xl border-4 border-black-primary bg-orange-primary shadow-image-card shadow-black-primary md:h-16 md:w-20">
+      
+      <div className="mx-auto mb-12 mt-8 flex flex-col items-center justify-center gap-8 md:gap-10 lg:flex-row">
+        {/* CONTAINER FOTO PROFIL NEO-BRUTALISM IMPROVED */}
+        <div className="relative group h-72 w-72 shrink-0 rounded-3xl border-4 border-black-primary bg-yellow-primary shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:h-[400px] md:w-[350px]">
+          
+          {/* Badge Ikon Kopi Animasi */}
+          <div className="absolute -right-4 -top-4 z-10 flex h-14 w-18 items-center justify-center rounded-xl border-4 border-black-primary bg-orange-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:h-16 md:w-20">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-8 w-8 md:h-12 md:w-12"
@@ -106,15 +110,22 @@ export default function About() {
               </rect>
             </svg>
           </div>
-          <Image
-            src={'/me.png'}
-            alt="Picture of the author"
-            width={1000}
-            height={1000}
-            className="aspect-auto h-full w-full rounded-lg object-cover px-8"
-          />
+
+          {/* Wrapper Image agar pas dengan border radius bingkai */}
+          <div className="w-full h-full overflow-hidden rounded-[20px]">
+            <Image
+              src={'/me.png'}
+              alt="Picture of the author"
+              width={500}
+              height={500}
+              priority
+              className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
         </div>
-        <p className="mt-5 text-justify text-base text-secondary-text md:mt-0 lg:w-1/2 xl:text-lg">
+
+        {/* DESKRIPSI TEKS */}
+        <p className="mt-5 text-justify text-base text-secondary-text md:mt-0 lg:w-1/2 xl:text-lg leading-relaxed">
           Saya adalah lulusan dari Jurusan <b>Teknologi Informasi</b> di Universitas Muhammadiyah Purworejo. 
           memiliki pemahaman yang kuat tentang bahasa pemrograman dan pengembangan web, serta pengalaman langsung dalam proyek <b>pengembangan perangkat lunak</b>.
           <br />
@@ -126,6 +137,7 @@ export default function About() {
           Selain itu, saya juga sedang memperdalam <b>Kotlin</b> untuk pengembangan aplikasi Android.
         </p>
       </div>
+
       <TextSection
         icon="💼"
         text="Ringkasan Profesional"
@@ -136,13 +148,13 @@ export default function About() {
           <ExperienceTimeline position={index % 2 == 1} key={index} {...data} />
         ))}
       </div>
+
       <TextSection
         icon="🎯"
         classNames="mt-10 xl:mt-28"
         text="Teknologi yang saya gunakan"
       />
       <div className="mt-5 flex flex-wrap justify-center justify-items-center gap-5 xl:gap-10 xl:px-40">
-        {/* <TechTabs /> */}
         {techIcons.map((data, index) => {
           const Icons = data.icons
           return (

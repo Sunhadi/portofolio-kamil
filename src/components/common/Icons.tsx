@@ -1,3 +1,5 @@
+import React from 'react'
+
 export function Github() {
   return (
     <svg
@@ -370,6 +372,53 @@ export function Telegram() {
             begin="0.7s"
             dur="0.3s"
             values="6;0"
+          ></animate>
+        </path>
+      </g>
+    </svg>
+  )
+}
+
+export function HackerRank() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-8 w-8 md:h-10 md:w-10"
+      viewBox="0 0 24 24"
+    >
+      {/* Background fill animation */}
+      <path
+        fill="black"
+        fillOpacity={0}
+        d="M5 2h4v7.261l3 1.556 3-1.556V2h4v20h-4v-7.261l-3-1.556-3 1.556V22H5V2z"
+      >
+        <animate
+          fill="freeze"
+          attributeName="fill-opacity"
+          begin="0.8s"
+          dur="0.15s"
+          values="0;0.3"
+        ></animate>
+      </path>
+      
+      {/* Stroke line drawing animation */}
+      <g
+        fill="none"
+        stroke="black"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+      >
+        <path
+          strokeDasharray={80}
+          strokeDashoffset={80}
+          d="M5 22V2H9V9.261L12 10.817L15 9.261V2H19V22H15V14.739L12 13.183L9 14.739V22H5Z"
+        >
+          <animate
+            fill="freeze"
+            attributeName="stroke-dashoffset"
+            dur="0.8s"
+            values="80;0"
           ></animate>
         </path>
       </g>
