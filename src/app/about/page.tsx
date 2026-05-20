@@ -47,19 +47,19 @@ export default function About() {
             />
           </motion.div>
 
-          {/* Badge Rumah (Posisi kanan bawah, statis/tanpa animasi) */}
+          {/* Badge Rumah */}
           <div className="absolute right-4 bottom-4 z-20 flex h-16 w-16 items-center justify-center rounded-full border-4 border-black-primary bg-blue-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <span className="text-3xl">🏠</span>
           </div>
         </motion.div>
 
-        {/* DESKRIPSI TEKS */}
+        {/* DESKRIPSI TEKS - SUDAH DIPERBAIKI */}
         <p className="mt-5 text-justify text-base text-secondary-text md:mt-0 lg:w-1/2 xl:text-lg leading-relaxed">
           Lulusan <b>Teknologi Informasi</b> dari Universitas Muhammadiyah Purworejo dengan semangat besar di dunia pengembangan perangkat lunak. Saya memiliki landasan yang kuat dalam pemrograman serta pengalaman praktis dalam membangun solusi digital dari tahap pengembangan hingga implementasi.
           <br /><br />
-          Saat ini, saya fokus mengembangkan karier sebagai <b>Fullstack Developer</b>, sambil memperluas keahlian ke ranah <b>Quality Assurance (QA)</b> dan <b>Project Management</b> untuk memastikan setiap produk yang dihasilkan memiliki kualitas tinggi, efisien, dan tepat guna.
+          Saat ini, saya fokus mengembangkan karier sebagai <b>Web Developer</b>, sambil memperluas keahlian ke ranah <b>Quality Assurance (QA)</b> dan <b>Project Management</b> untuk memastikan setiap produk yang dihasilkan memiliki kualitas tinggi, efisien, dan tepat guna.
           <br /><br />
-          Teknologi utama yang saya kuasai meliputi <b>ReactJS</b> dan <b>NextJS</b> untuk sisi <i>front-end</i>, serta <b>ExpressJS</b> dan <b>AdonisJS</b> untuk sisi <i>back-end</i>. Saya juga aktif memperdalam pengembangan aplikasi Android menggunakan <b>Kotlin</b>.
+          Sebagai <b>Web Developer</b>, saya memiliki keahlian dalam membangun antarmuka web yang modern dan responsif menggunakan <b>ReactJS</b> dan <b>NextJS</b>. Di sisi <i>back-end</i>, saya berfokus pada pengembangan sistem yang terstruktur dan aman menggunakan <b>Laravel</b>. Selain itu, saya aktif memperdalam pengembangan aplikasi <i>mobile</i> menggunakan <b>Flutter</b> serta meningkatkan kualitas perangkat lunak melalui <i>automated testing</i> menggunakan <b>Playwright</b> dan <b>Katalon</b>.
         </p>
       </div>
 

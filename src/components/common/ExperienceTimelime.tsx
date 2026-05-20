@@ -10,6 +10,7 @@ export default function ExperienceTimeline({
   title,
   date,
   description,
+  tech,
 }: {
   position: boolean
   type: string
@@ -17,6 +18,7 @@ export default function ExperienceTimeline({
   title: string
   date: string
   description: string
+  tech?: string[] // Tambahkan properti ini
 }) {
   return (
     <motion.div
@@ -43,7 +45,22 @@ export default function ExperienceTimeline({
         <p className="overflow-hidden text-justify leading-tight">
           {description}
         </p>
-        <p className="md:text-lg">{date}</p>
+        
+        {/* Render Tech Stack jika ada */}
+        {tech && tech.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-2">
+            {tech.map((item, idx) => (
+              <span
+                key={idx}
+                className="rounded border border-black-primary bg-yellow-primary px-2 py-0.5 text-[10px] font-extrabold uppercase text-black"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <p className="md:text-lg mt-1 font-medium">{date}</p>
       </motion.div>
       {position && <DotTimeline type={type} />}
     </motion.div>

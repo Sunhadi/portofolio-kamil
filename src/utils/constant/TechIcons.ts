@@ -17,6 +17,7 @@ import {
   SiMongodb,
   SiMysql,
   SiFramer,
+  SiFlutter,
   SiJetpackcompose,
 } from 'react-icons/si'
 
@@ -40,8 +41,8 @@ export const techIcons = [
     icons: BiLogoGoLang,
   },
   {
-    name: 'Kotlin',
-    icons: TbBrandKotlin,
+    name: 'FLutter',
+    icons: SiFlutter,
   },
 
   {
@@ -57,32 +58,12 @@ export const techIcons = [
     icons: SiLaravel,
   },
   {
-    name: 'Express',
-    icons: SiExpress,
-  },
-  {
-    name: 'AdonisJs',
-    icons: SiAdonisjs,
-  },
-  {
     name: 'NodeJS',
     icons: BiLogoNodejs,
   },
   {
     name: 'Tailwinds',
     icons: SiTailwindcss,
-  },
-  {
-    name: 'Compose',
-    icons: SiJetpackcompose,
-  },
-  {
-    name: 'Framer',
-    icons: SiFramer,
-  },
-  {
-    name: 'Jest',
-    icons: SiJest,
   },
   {
     name: 'MongoDB',

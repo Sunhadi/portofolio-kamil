@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description: 'Ahmad Sunhadi Kamil | Portfolio',
   icons: {
     icon: '/kamil-logo.svg', // Lokasi file di folder public
-    shortcut: '/favicon.ico',
-    apple: '/apple-icon.png',
+    shortcut: '/kamil-logo.svg',
+    apple: '/kamil-logo.svg',
   },
 }
 

@@ -61,7 +61,7 @@ export default function Home() {
           I&apos;m{' '}
           <TypeAnimation
             sequence={[
-              'Fullstack Developer',
+              'Web Developer',
               3000,
               'Quality Assurance',
               3000,
@@ -76,11 +76,11 @@ export default function Home() {
             className="text-orange-primary"
           />
         </h2>
-        <p className="max-w-lg text-center text-sm dark:text-white md:max-w-2xl md:text-left md:text-base leading-relaxed">
-          Seorang <b>Fullstack Developer</b> yang berdedikasi dengan pengalaman pengembangan 
-          aplikasi web dan mobile. Kini fokus memperluas keahlian dalam 
-          <b> Quality Assurance</b> dan <b>Manajemen Proyek</b> untuk memberikan solusi digital yang efisien dan berkualitas.
-        </p>
+            <p className="max-w-lg text-center text-sm dark:text-white md:max-w-2xl md:text-left md:text-base leading-relaxed">
+              Seorang <b>Web Developer</b> yang berdedikasi dengan pengalaman pengembangan 
+              aplikasi berbasis web. Kini fokus memperluas keahlian dalam 
+              <b> Quality Assurance</b> dan <b>Manajemen Proyek</b> untuk memberikan solusi digital yang efisien dan berkualitas.
+            </p>
         <div className="flex gap-4">
           <a
             onClick={() => animatePageOut('/resume', router)}
