@@ -15,7 +15,7 @@ export const experience = [
     date: '2018 - 2021',
   },
   {
-    title: 'TEKNOLOGI INFORMASI',
+    title: 'Teknologi Informasi',
     company: 'Universitas Muhammadiyah Purworejo',
     type: 'Education',
     description:
@@ -31,7 +31,7 @@ export const experience = [
     date: '2024 - Sekarang',
   },
   {
-    title: 'KPPS 4 + Sirekap di TPS 01 Desa Somongari',
+    title: 'KPPS 4 dan Sirekap di TPS 01 Desa Somongari',
     company: 'KPU Kabupaten Purworejo',
     type: 'Work',
     description:
