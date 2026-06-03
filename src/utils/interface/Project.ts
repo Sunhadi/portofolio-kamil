@@ -1,8 +1,9 @@
 export interface IProject {
-  title: string
-  image: string
-  deskripsi: string
-  type: string
-  demo?: string
-  repo: string
+  id?: number;
+  title: string;
+  image: string;
+  deskripsi: string; // Matches database schema
+  repo?: string;
+  type: 'web' | 'mobile' | 'api';
+  tech?: string[];
 }

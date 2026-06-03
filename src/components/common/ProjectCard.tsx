@@ -20,11 +20,10 @@ export default function ProjectCard({
       whileHover={{ y: -5 }} 
       transition={{ duration: 0.3 }}
       viewport={{ once: true }}
-      // Ukuran kartu tetap h-64 w-64 untuk konsistensi grid
       className="dark:border-dark-secondary group relative h-64 w-64 cursor-pointer overflow-hidden rounded-[4px] border-2 border-black-primary bg-white shadow-button-card transition-shadow hover:shadow-xl"
     >
       <Image
-        src={image} 
+        src={image?.trim() || '/placeholder.png'} 
         width={500} 
         height={500}
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -32,7 +31,6 @@ export default function ProjectCard({
         unoptimized 
       />
       
-      {/* Tombol Aksi: Muncul saat di-hover (atau di-tap pada mobile) */}
       <div className="absolute right-0 top-0 z-20 flex h-1/4 w-full -translate-y-10 items-center justify-end gap-2 p-2 transition-all duration-300 group-hover:translate-y-0">
         {demo && demo !== 'none' && (
           <a
@@ -56,10 +54,8 @@ export default function ProjectCard({
         )}
       </div>
 
-      {/* Panel Deskripsi & Tech Stack (Warna Yellow Primary) */}
       <div className="dark:bg-dark-secondary absolute bottom-0 z-10 w-full border-t-2 border-black-primary bg-yellow-primary p-3 transition-all duration-300 h-12 group-hover:h-[75%]">
         <div className="h-full flex flex-col overflow-hidden">
-          {/* Baris Judul & Tipe */}
           <h1 className="line-clamp-1 text-[13px] font-bold text-black-primary group-hover:line-clamp-2">
             {title}
             <span className="ml-2 rounded-md bg-black px-1.5 py-0.5 text-[9px] text-white uppercase tracking-tighter">
@@ -67,7 +63,6 @@ export default function ProjectCard({
             </span>
           </h1>
 
-          {/* Bagian Tech Stack: Hanya muncul saat di-hover/tap */}
           <div className="mt-2 hidden group-hover:flex flex-wrap gap-1">
             {tech?.map((item: string, idx: number) => (
               <span 
@@ -79,7 +74,6 @@ export default function ProjectCard({
             ))}
           </div>
 
-          {/* Deskripsi Singkat */}
           <p className="hidden mt-2 text-[10px] leading-relaxed font-medium text-black-primary group-hover:block line-clamp-3 italic border-t border-black-primary/10 pt-1">
             {description}
           </p>

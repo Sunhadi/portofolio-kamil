@@ -1,7 +1,8 @@
 export interface ICertificate {
-  title: string
-  company: string
-  image: string
-  href: string
-  type: 'course' | 'competition' | 'competence'
+  id?: number;
+  title: string;
+  company: string;
+  image: string;
+  href: string;
+  type: 'course' | 'competence';
 }

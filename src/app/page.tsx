@@ -65,7 +65,7 @@ export default function Home() {
               3000,
               'Quality Assurance',
               3000,
-              'Junior Project Management',
+              'Product Management',
               3000,
             ]}
             wrapper="span"
@@ -76,11 +76,13 @@ export default function Home() {
             className="text-orange-primary"
           />
         </h2>
-            <p className="max-w-lg text-center text-sm dark:text-white md:max-w-2xl md:text-left md:text-base leading-relaxed">
-              Seorang <b>Web Developer</b> yang berdedikasi dengan pengalaman pengembangan 
-              aplikasi berbasis web. Kini fokus memperluas keahlian dalam 
-              <b> Quality Assurance</b> dan <b>Manajemen Proyek</b> untuk memberikan solusi digital yang efisien dan berkualitas.
-            </p>
+        <p className="max-w-lg text-center text-sm dark:text-white md:max-w-2xl md:text-left md:text-base leading-relaxed">
+          Lulusan <b>Teknologi Informasi</b> dengan antusiasme tinggi di bidang pengembangan perangkat lunak. 
+          Saat ini, saya fokus berkarier sebagai <b>Web Developer</b> yang andal dalam membangun solusi 
+          digital responsif dan efisien. Selain itu, saya sedang memperluas keahlian ke ranah 
+          <b> Quality Assurance (QA)</b> dan <b>Product Management</b> untuk memastikan setiap produk 
+          yang saya bangun memiliki kualitas tinggi dan selaras dengan kebutuhan pengguna.
+        </p>
         <div className="flex gap-4">
           <a
             onClick={() => animatePageOut('/resume', router)}
