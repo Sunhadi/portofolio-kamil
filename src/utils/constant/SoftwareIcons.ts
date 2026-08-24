@@ -4,11 +4,10 @@ import {
   SiPostman, 
   SiFigma, 
   SiPlaywright, 
-  SiTrello,
-  SiDocker,
+  SiJira,
+  SiSlack,
   SiLaragon,
-  SiNotion,
-  SiTestinglibrary // Menggantikan SiKatalon
+  SiTestinglibrary
 } from 'react-icons/si'
 
 export const softwareIcons = [
@@ -17,9 +16,8 @@ export const softwareIcons = [
   { name: 'Postman', icons: SiPostman },
   { name: 'Figma', icons: SiFigma },
   { name: 'Playwright', icons: SiPlaywright },
-  { name: 'Trello', icons: SiTrello },
-  { name: 'Docker', icons: SiDocker },
+  { name: 'Jira', icons: SiJira },
+  { name: 'Slack', icons: SiSlack },
   { name: 'Laragon', icons: SiLaragon },
-  { name: 'Notion', icons: SiNotion },
-  { name: 'Katalon', icons: SiTestinglibrary }, // Tetap tampilkan label Katalon, tapi ikonnya testing library
+  { name: 'Katalon', icons: SiTestinglibrary },
 ]

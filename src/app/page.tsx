@@ -61,11 +61,9 @@ export default function Home() {
           I&apos;m{' '}
           <TypeAnimation
             sequence={[
-              'Web Developer',
+              'FullStack Developer',
               3000,
-              'Quality Assurance',
-              3000,
-              'Product Management',
+              'Technical Project Manager',
               3000,
             ]}
             wrapper="span"
@@ -77,11 +75,7 @@ export default function Home() {
           />
         </h2>
         <p className="max-w-lg text-center text-sm dark:text-white md:max-w-2xl md:text-left md:text-base leading-relaxed">
-          Lulusan <b>Teknologi Informasi</b> dengan antusiasme tinggi di bidang pengembangan perangkat lunak. 
-          Saat ini, saya fokus berkarier sebagai <b>Web Developer</b> yang andal dalam membangun solusi 
-          digital responsif dan efisien. Selain itu, saya sedang memperluas keahlian ke ranah 
-          <b> Quality Assurance (QA)</b> dan <b>Product Management</b> untuk memastikan setiap produk 
-          yang saya bangun memiliki kualitas tinggi dan selaras dengan kebutuhan pengguna.
+          Berpengalaman di bidang pengembangan perangkat lunak dengan fokus karier sebagai <b>Fullstack Developer</b> dan <b>Technical Project Manager.</b> Andal dalam merancang, membangun, serta mengelola solusi digital secara menyeluruh, efisien, dan selaras dengan kebutuhan strategis pengguna maupun bisnis.
         </p>
         <div className="flex gap-4">
           <a

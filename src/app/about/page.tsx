@@ -49,9 +49,8 @@ export default function About() {
         </motion.div>
 
       <p className="mt-5 text-justify text-base text-secondary-text md:mt-0 lg:w-1/2 xl:text-lg leading-relaxed">
-        Lulusan <b>Teknologi Informasi</b> dari Universitas Muhammadiyah Purworejo dengan antusiasme tinggi di bidang pengembangan perangkat lunak. Saat ini, saya fokus berkarier sebagai <b>Web Developer</b> yang andal dalam membangun solusi digital responsif dan efisien menggunakan <b>ReactJS, NextJS,</b> dan <b>Laravel</b>.
-        <br /><br />
-        Selain memperdalam pengembangan web, saya juga sedang memperluas keahlian ke ranah <b>Quality Assurance (QA)</b> melalui <i>automated testing</i> serta <b>Product Management</b>. Hal ini saya lakukan untuk memahami alur pengembangan produk secara menyeluruh, sehingga setiap solusi yang saya bangun memiliki kualitas tinggi dan selaras dengan kebutuhan pengguna.
+        Seorang <b>FullStack Developer</b> dengan antusiasme tinggi di bidang pengembangan perangkat lunak. Saat ini, saya fokus berkarier sebagai <b> FullStack Developer</b> yang andal dalam membangun solusi digital responsif dan efisien menggunakan <b>ReactJS, NextJS, dan Laravel</b>.
+        Selain memperdalam pengembangan web, saya juga sedang memperluas keahlian ke ranah <b> Technical Project Management </b>. Hal ini saya lakukan untuk memahami alur <b> Pengembangan Produk </b> secara menyeluruh, sehingga setiap solusi yang saya bangun memiliki kualitas tinggi dan selaras dengan kebutuhan pengguna.
       </p>
       </div>
 
